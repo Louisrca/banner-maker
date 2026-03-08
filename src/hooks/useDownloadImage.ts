@@ -2,9 +2,12 @@ import { toPng, toJpeg } from "html-to-image";
 
 export const useDownloadImage = () => {
   const htmlToPng = (nodeName: string, fileName?: string) => {
-    const node = document.querySelector(nodeName) as HTMLElement;
+    console.log("youuuhouuu");
+    const node = document.getElementById(nodeName);
+    console.log("🚀 ~ htmlToPng ~ node:", node);
     if (node) {
-      toPng(node)
+      console.log("youuuhouuu 222222");
+      toPng(node, { quality: 1 })
         .then((dataUrl) => {
           const link = document.createElement("a");
           link.download = fileName ?? "banner.png";
@@ -18,9 +21,9 @@ export const useDownloadImage = () => {
   };
 
   const htmlToJpeg = (nodeName: string, fileName?: string) => {
-    const node = document.querySelector(nodeName) as HTMLElement;
+    const node = document.getElementById(nodeName);
     if (node) {
-      toJpeg(node)
+      toJpeg(node, { quality: 1 })
         .then((dataUrl) => {
           const link = document.createElement("a");
           link.download = fileName ?? "banner.jpeg";

@@ -22,7 +22,17 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    "baseUrl": ".",
+    "paths": {
+      "@Presentationals/*": ["src/components/presentationals/*"],
+      "@UI/*": ["src/components/ui/*"],
+      "@Pages/*": ["src/pages/*"],
+      "@Containers/*": ["src/components/containers/*"],
+      "@Hooks/*": ["src/hooks/*"],
+      "@Utils/*": ["src/utils/*"]
+    }
   },
   "include": ["src"]
 }

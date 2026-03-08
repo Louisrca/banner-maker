@@ -1,10 +1,10 @@
+import Home from "@Pages/Home";
 import "./App.css";
-import BannerCustomizer from "./components/BannerCustomizer";
 
 function App() {
   return (
     <main className="app">
-      <BannerCustomizer />
+      <Home />
     </main>
   );
 }
