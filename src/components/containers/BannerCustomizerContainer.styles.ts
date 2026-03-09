@@ -1,5 +1,13 @@
-export const container = `flex flex-col gap-4`;
+import clsx from "clsx";
 
-export const header = `mb-8 text-2xl font-bold text-center uppercase `;
+export const container = clsx("md:flex", "md:flex-col", "md:gap-4");
 
-export const content = `flex flex-row gap-8`;
+export const header = clsx(
+  "mb-8",
+  "text-2xl",
+  "font-bold",
+  "text-center",
+  "uppercase",
+);
+
+export const content = clsx("md:flex", "md:flex-row", "md:gap-8");

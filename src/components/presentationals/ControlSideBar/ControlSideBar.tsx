@@ -1,7 +1,6 @@
 import Button from "@UI/Button/Button";
 import CardContainer from "@UI/CardContainer/CardContainer";
 import Checkbox from "@UI/Checkbox/Checkbox";
-import { type ChangeEvent } from "react";
 import * as styles from "./ControlSideBar.styles";
 
 type ControlSideBarProps = {

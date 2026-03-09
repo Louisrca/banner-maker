@@ -13,7 +13,7 @@ export default function BannerCustomizerContainer() {
   const [isContentSavedInLocalStorage, setIsContentSavedInLocalStorage] =
     useState<boolean>(false);
 
-  const { htmlToJpeg } = useDownloadImage();
+  const { htmlToPng } = useDownloadImage();
   const [imageBase64, setImageBase64] = useState<string>();
 
   const [mainText, setMainText] = useState<string>("");
@@ -28,7 +28,7 @@ export default function BannerCustomizerContainer() {
     });
   };
   const handleHtmlToPng = () => {
-    htmlToJpeg("imageContainer", "goldorak-banner.jpeg");
+    htmlToPng("imageContainer");
   };
 
   // TODO: Refactor this function to only save the image name in local storage the entire node and convert the image to base64 when loading the content from local storage

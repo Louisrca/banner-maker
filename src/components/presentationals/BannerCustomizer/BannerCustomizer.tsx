@@ -2,6 +2,7 @@ import CardContainer from "@UI/CardContainer/CardContainer";
 import React, { useEffect } from "react";
 import * as styles from "./BannerCustomizer.styles";
 import Button from "@UI/Button/Button";
+import { imageToBase64 } from "@Utils/convert-image-file";
 
 type BannerCustomizerProps = {
   selectedFile: File | null;
@@ -18,15 +19,6 @@ export default function BannerCustomizer({
   isGridOverlayEnabled,
   showFileInput = false,
 }: BannerCustomizerProps) {
-  const getImageDimensions = (
-    file: File,
-  ): Promise<{ width: number; height: number }> => {
-    return new Promise((resolve) => {
-      const img = new Image();
-      img.onload = () => resolve({ width: img.width, height: img.height });
-      img.src = URL.createObjectURL(file);
-    });
-  };
   const inputFileRef = React.useRef<HTMLInputElement>(null);
 
   const [dimensions, setDimensions] = React.useState<{
@@ -34,10 +26,27 @@ export default function BannerCustomizer({
     height: number;
   } | null>(null);
 
+  const [previewUrl, setPreviewUrl] = React.useState<string>("");
+
   useEffect(() => {
-    if (selectedFile) {
-      getImageDimensions(selectedFile).then(setDimensions);
+    if (!selectedFile) {
+      setPreviewUrl("");
+      setDimensions(null);
+      return;
     }
+
+    const objectUrl = URL.createObjectURL(selectedFile);
+
+    const img = new Image();
+    img.onload = () => {
+      setDimensions({ width: img.width, height: img.height });
+      URL.revokeObjectURL(objectUrl);
+    };
+    img.src = objectUrl;
+
+    imageToBase64(selectedFile).then((base64) => {
+      setPreviewUrl(base64);
+    });
   }, [selectedFile]);
 
   return (
@@ -73,11 +82,7 @@ export default function BannerCustomizer({
             </div>
             <div className={styles.imageContainer} id="imageContainer">
               {selectedFile && (
-                <img
-                  src={URL.createObjectURL(selectedFile)}
-                  alt="Selected"
-                  className={styles.image}
-                />
+                <img src={previewUrl} alt="Selected" className={styles.image} />
               )}
               {mainText && (
                 <span className={styles.textOverlay}>{mainText}</span>
