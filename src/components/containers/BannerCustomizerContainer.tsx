@@ -7,6 +7,8 @@ import { useDownloadImage } from "@Hooks/useDownloadImage";
 
 export default function BannerCustomizerContainer() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [isGridOverlayEnabled, setIsGridOverlayEnabled] =
+    useState<boolean>(false);
 
   const [isContentSavedInLocalStorage, setIsContentSavedInLocalStorage] =
     useState<boolean>(false);
@@ -61,23 +63,33 @@ export default function BannerCustomizerContainer() {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h1>Banner Customizer</h1>
+        <h1
+          style={{
+            display: "inline-block",
+            transform: "scaleY(2) scaleX(1.5) ",
+            letterSpacing: "-0.09em",
+          }}
+        >
+          Banner.io
+        </h1>
       </div>
       <div className={styles.content}>
         <ControlSideBar
-          handleFileChange={handleFileChange}
           setMainText={setMainText}
           fileName={fileName}
           setFileName={setFileName}
           mainText={mainText}
-          showFileInput={!!selectedFile}
           isContentSavedInLocalStorage={isContentSavedInLocalStorage}
           handleHtmlToPng={handleHtmlToPng}
+          setIsGridOverlayEnabled={setIsGridOverlayEnabled}
+          isGridOverlayEnabled={isGridOverlayEnabled}
         />
         <BannerCustomizer
           selectedFile={selectedFile}
           mainText={mainText}
           handleFileChange={handleFileChange}
+          isGridOverlayEnabled={isGridOverlayEnabled}
+          showFileInput={!!selectedFile}
         />
       </div>
     </div>

@@ -1,42 +1,34 @@
+import Button from "@UI/Button/Button";
+import CardContainer from "@UI/CardContainer/CardContainer";
+import Checkbox from "@UI/Checkbox/Checkbox";
 import { type ChangeEvent } from "react";
 import * as styles from "./ControlSideBar.styles";
-import CardContainer from "@UI/CardContainer/CardContainer";
-import Button from "@UI/Button/Button";
 
 type ControlSideBarProps = {
-  handleFileChange: (event: ChangeEvent<HTMLInputElement>) => void;
   setMainText: (text: string) => void;
   fileName: string;
   setFileName: (name: string) => void;
-  showFileInput?: boolean;
   mainText?: string;
   isContentSavedInLocalStorage?: boolean;
   handleHtmlToPng: () => void;
+  setIsGridOverlayEnabled: (isEnabled: boolean) => void;
+  isGridOverlayEnabled: boolean;
 };
 
 export default function ControlSideBar({
-  handleFileChange,
   setMainText,
   fileName,
   setFileName,
-  showFileInput = false,
   mainText = "",
   isContentSavedInLocalStorage,
   handleHtmlToPng,
+  setIsGridOverlayEnabled,
+  isGridOverlayEnabled,
 }: ControlSideBarProps) {
   return (
     <CardContainer>
       <h2>Control</h2>
       <div className={styles.controlInputGroup}>
-        {showFileInput && (
-          <input
-            type="file"
-            id="updateFile"
-            name="updateFile"
-            accept="image/*"
-            onChange={handleFileChange}
-          />
-        )}
         <input
           type="text"
           id="fileName"
@@ -62,6 +54,14 @@ export default function ControlSideBar({
             Your content has been saved in local storage.
           </p>
         )}
+        <Checkbox
+          label="Show grid overlay"
+          checked={isGridOverlayEnabled}
+          onChange={() =>
+            setIsGridOverlayEnabled(isGridOverlayEnabled ? false : true)
+          }
+        />
+
         <Button onClick={handleHtmlToPng}>Download banner</Button>
       </div>
     </CardContainer>

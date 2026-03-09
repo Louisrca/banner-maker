@@ -7,6 +7,7 @@ type ButtonProps = {
   href?: string;
   onClick?: () => void;
   children: ReactNode;
+  buttonVariant?: "primary" | "secondary"; // Example of a variant prop for styling
 };
 
 export default function Button({
@@ -14,13 +15,14 @@ export default function Button({
   href,
   onClick,
   children,
+  buttonVariant = "primary",
 }: ButtonProps) {
   return isAnchor ? (
     <a href={href} onClick={onClick} className={styles.anchor}>
       {children}
     </a>
   ) : (
-    <button onClick={onClick} className={styles.button}>
+    <button onClick={onClick} className={styles.button(buttonVariant)}>
       {children}
     </button>
   );

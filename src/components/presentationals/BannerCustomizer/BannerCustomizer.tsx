@@ -1,17 +1,22 @@
-import React from "react";
 import CardContainer from "@UI/CardContainer/CardContainer";
+import React, { useEffect } from "react";
 import * as styles from "./BannerCustomizer.styles";
+import Button from "@UI/Button/Button";
 
 type BannerCustomizerProps = {
   selectedFile: File | null;
   mainText: string;
   handleFileChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  isGridOverlayEnabled: boolean;
+  showFileInput?: boolean;
 };
 
 export default function BannerCustomizer({
   selectedFile,
   mainText,
   handleFileChange,
+  isGridOverlayEnabled,
+  showFileInput = false,
 }: BannerCustomizerProps) {
   const getImageDimensions = (
     file: File,
@@ -22,13 +27,14 @@ export default function BannerCustomizer({
       img.src = URL.createObjectURL(file);
     });
   };
+  const inputFileRef = React.useRef<HTMLInputElement>(null);
 
   const [dimensions, setDimensions] = React.useState<{
     width: number;
     height: number;
   } | null>(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (selectedFile) {
       getImageDimensions(selectedFile).then(setDimensions);
     }
@@ -36,19 +42,52 @@ export default function BannerCustomizer({
 
   return (
     <CardContainer>
-      <div>
-        <p>Selected file: {selectedFile?.name}</p>
+      <div className={styles.container}>
         {selectedFile ? (
-          <div className={styles.imageContainer} id="imageContainer">
-            {selectedFile && (
-              <img
-                src={URL.createObjectURL(selectedFile)}
-                alt="Selected"
-                className={styles.image}
-              />
-            )}
-            {mainText && <span className={styles.textOverlay}>{mainText}</span>}
-          </div>
+          <>
+            <div className={styles.header}>
+              <p className={styles.fileName}>{selectedFile?.name}</p>
+              {showFileInput && (
+                <>
+                  <Button
+                    buttonVariant="secondary"
+                    onClick={() => {
+                      if (inputFileRef.current) {
+                        inputFileRef.current.click();
+                      }
+                    }}
+                  >
+                    Change image
+                  </Button>
+                  <input
+                    type="file"
+                    id="updateFile"
+                    name="updateFile"
+                    accept="image/*"
+                    className="hidden"
+                    ref={inputFileRef}
+                    onChange={handleFileChange}
+                  />
+                </>
+              )}
+            </div>
+            <div className={styles.imageContainer} id="imageContainer">
+              {selectedFile && (
+                <img
+                  src={URL.createObjectURL(selectedFile)}
+                  alt="Selected"
+                  className={styles.image}
+                />
+              )}
+              {mainText && (
+                <span className={styles.textOverlay}>{mainText}</span>
+              )}
+              <div
+                className={styles.gridOverlay(isGridOverlayEnabled)}
+                id="gridOverlay"
+              ></div>
+            </div>
+          </>
         ) : (
           <label className={styles.emptyContainer} htmlFor="file">
             <span className="text-orange-500">Upload image</span>

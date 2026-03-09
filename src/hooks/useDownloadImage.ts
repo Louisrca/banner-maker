@@ -7,7 +7,7 @@ export const useDownloadImage = () => {
     console.log("🚀 ~ htmlToPng ~ node:", node);
     if (node) {
       console.log("youuuhouuu 222222");
-      toPng(node, { quality: 1 })
+      toPng(node, { quality: 1, filter: (node) => node.id !== "gridOverlay" })
         .then((dataUrl) => {
           const link = document.createElement("a");
           link.download = fileName ?? "banner.png";
@@ -23,7 +23,7 @@ export const useDownloadImage = () => {
   const htmlToJpeg = (nodeName: string, fileName?: string) => {
     const node = document.getElementById(nodeName);
     if (node) {
-      toJpeg(node, { quality: 1 })
+      toJpeg(node, { quality: 1, filter: (node) => node.id !== "gridOverlay" })
         .then((dataUrl) => {
           const link = document.createElement("a");
           link.download = fileName ?? "banner.jpeg";

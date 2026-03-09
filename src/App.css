@@ -6,5 +6,18 @@
   width: 100vw;
   height: 100vh;
   gap: 2rem;
-  background-color: #ffffff;
+  background-image:
+    linear-gradient(rgba(223, 223, 223, 0.4) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(223, 223, 223, 0.4) 1px, transparent 1px);
+  background-size: 4.8rem 4.8rem;
+  animation: gridMove 14s linear infinite;
+}
+
+@keyframes gridMove {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 4.8rem 4.8rem;
+  }
 }
