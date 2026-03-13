@@ -10,4 +10,4 @@ export const header = clsx(
   "uppercase",
 );
 
-export const content = clsx("md:flex", "md:flex-row", "md:gap-8");
+export const content = clsx("md:flex", "md:flex-row", "gap-1");

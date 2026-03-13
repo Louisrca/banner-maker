@@ -1,4 +1,4 @@
-import { toBlob, toJpeg, toPng } from "html-to-image";
+import { toBlob, toJpeg } from "html-to-image";
 
 type DownloadOptions = {
   fileName?: string;
@@ -50,7 +50,6 @@ export const useDownloadImage = () => {
         canvasWidth: Math.round(rect.width * scale),
         canvasHeight: Math.round(rect.height * scale),
         filter: buildFilter(excludeGrid),
-        skipFonts: true,
       });
 
       if (!blob) {
@@ -84,7 +83,6 @@ export const useDownloadImage = () => {
         canvasWidth: Math.round(rect.width * scale),
         canvasHeight: Math.round(rect.height * scale),
         filter: buildFilter(excludeGrid),
-        skipFonts: true,
       });
 
       const link = document.createElement("a");

@@ -7,6 +7,9 @@ import { useDownloadImage } from "@Hooks/useDownloadImage";
 
 export default function BannerCustomizerContainer() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+
+  const [colorText, setColorText] = useState<string>("#000000");
+
   const [isGridOverlayEnabled, setIsGridOverlayEnabled] =
     useState<boolean>(false);
 
@@ -83,6 +86,8 @@ export default function BannerCustomizerContainer() {
           handleHtmlToPng={handleHtmlToPng}
           setIsGridOverlayEnabled={setIsGridOverlayEnabled}
           isGridOverlayEnabled={isGridOverlayEnabled}
+          setColorText={setColorText}
+          colorText={colorText}
         />
         <BannerCustomizer
           selectedFile={selectedFile}
@@ -90,6 +95,7 @@ export default function BannerCustomizerContainer() {
           handleFileChange={handleFileChange}
           isGridOverlayEnabled={isGridOverlayEnabled}
           showFileInput={!!selectedFile}
+          colorText={colorText}
         />
       </div>
     </div>

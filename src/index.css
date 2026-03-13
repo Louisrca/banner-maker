@@ -1,14 +1,20 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("./public/fonts/SpaceGrotesk-VariableFont_wght.ttf")
+    format("truetype");
+  font-display: swap;
+}
+
 :root {
-  --font-Atkinson-Hyperlegible-Mono: "Atkinson Hyperlegible Mono", sans-serif;
-  --font-Space-Grotesk: "Space Grotesk", sans-serif;
+  --font-space-grotesk: "Space Grotesk", sans-serif;
 }
 
 body {
-  /* font-family: var(--font-Atkinson-Hyperlegible-Mono); */
-  font-family: var(--font-Space-Grotesk);
+  font-family: var(--font-space-grotesk);
 }
+
 h1 {
   font-size: 2rem;
   font-weight: 700;

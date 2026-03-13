@@ -12,6 +12,8 @@ type ControlSideBarProps = {
   handleHtmlToPng: () => void;
   setIsGridOverlayEnabled: (isEnabled: boolean) => void;
   isGridOverlayEnabled: boolean;
+  setColorText: (color: string) => void;
+  colorText: string;
 };
 
 export default function ControlSideBar({
@@ -19,10 +21,11 @@ export default function ControlSideBar({
   fileName,
   setFileName,
   mainText = "",
-  isContentSavedInLocalStorage,
   handleHtmlToPng,
   setIsGridOverlayEnabled,
   isGridOverlayEnabled,
+  setColorText,
+  colorText,
 }: ControlSideBarProps) {
   return (
     <CardContainer>
@@ -38,6 +41,7 @@ export default function ControlSideBar({
             setFileName(event.target.value);
           }}
         />
+
         <textarea
           id="mainText"
           maxLength={100}
@@ -48,11 +52,13 @@ export default function ControlSideBar({
             setMainText(event.target.value);
           }}
         />
-        {isContentSavedInLocalStorage && (
-          <p style={{ color: "green" }}>
-            Your content has been saved in local storage.
-          </p>
-        )}
+        <input
+          type="color"
+          id="colorPicker"
+          value={colorText}
+          onChange={(event) => setColorText(event.target.value)}
+        />
+
         <Checkbox
           label="Show grid overlay"
           checked={isGridOverlayEnabled}

@@ -20,7 +20,7 @@ export const emptyContainer = clsx(
   "items-center",
   "justify-center",
   "w-full",
-  "max-w-[550px]",
+  "max-w-[550px]", // 550px
   "aspect-[3/1]",
   "border-2",
   "border-dashed",
@@ -31,16 +31,26 @@ export const emptyContainer = clsx(
   "mx-auto",
 );
 
-export const textOverlay = clsx(
+export const textOverlayContainer = clsx(
   "absolute",
-  "top-[50%]",
-  "left-[50%]",
-  "transform",
+  "top-1/2",
+  "left-1/2",
   "-translate-x-1/2",
   "-translate-y-1/2",
-  "text-red-500",
+  "z-10",
+  "cursor-move",
+  "select-none",
+  "inline-block",
+  "max-w-full",
+  "px-2",
+  "py-1",
+);
+
+export const textOverlay = clsx(
   "text-center",
-  "w-[90%]",
+  "whitespace-pre-wrap",
+  "break-words",
+  "pointer-events-none",
 );
 
 export const gridOverlay = (isEnabled: boolean) =>
