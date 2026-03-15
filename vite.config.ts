@@ -1,7 +1,10 @@
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
-import path from "path";
+import { fileURLToPath } from "url";
+import * as path from "path";
 import { defineConfig } from "vite";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -16,7 +19,6 @@ export default defineConfig({
   resolve: {
     alias: {
       "@Pages": path.resolve(__dirname, "./src/pages"),
-      "@Components": path.resolve(__dirname, "./src/components"),
       "@Presentationals": path.resolve(
         __dirname,
         "./src/components/presentationals",

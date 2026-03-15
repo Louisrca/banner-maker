@@ -2,7 +2,7 @@ import BannerCustomizerContainer from "@Containers/BannerCustomizerContainer";
 
 export default function Home() {
   return (
-    <div>
+    <div style={{ height: "100%" }}>
       <BannerCustomizerContainer />
     </div>
   );

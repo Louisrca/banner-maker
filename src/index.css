@@ -2,8 +2,7 @@
 
 @font-face {
   font-family: "Space Grotesk";
-  src: url("./public/fonts/SpaceGrotesk-VariableFont_wght.ttf")
-    format("truetype");
+  src: url("/fonts/SpaceGrotesk-VariableFont_wght.ttf") format("truetype");
   font-display: swap;
 }
 
@@ -11,8 +10,16 @@
   --font-space-grotesk: "Space Grotesk", sans-serif;
 }
 
+html,
+body,
+#root {
+  height: 100%;
+}
+
 body {
+  margin: 0;
   font-family: var(--font-space-grotesk);
+  overflow: hidden;
 }
 
 h1 {
@@ -27,8 +34,16 @@ h2 {
 
 .bg-grid-pattern {
   background-image:
-    linear-gradient(to right, rgba(171, 171, 171, 0.702) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(171, 171, 171, 0.702) 1px, transparent 1px);
+    linear-gradient(
+      to right,
+      oklch(70.7% 0.022 261.325) 0.65px,
+      transparent 0.65px
+    ),
+    linear-gradient(
+      to bottom,
+      oklch(70.7% 0.022 261.325) 0.65px,
+      transparent 0.65px
+    );
   background-size: 30.5px 30.5px;
   mix-blend-mode: difference;
   background-position: 0 0;

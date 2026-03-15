@@ -13,6 +13,7 @@ type BannerCustomizerProps = {
   isGridOverlayEnabled: boolean;
   showFileInput?: boolean;
   colorText: string;
+  isDownloading?: boolean;
 };
 
 export default function BannerCustomizer({
@@ -22,6 +23,7 @@ export default function BannerCustomizer({
   isGridOverlayEnabled,
   showFileInput = false,
   colorText,
+  isDownloading = false,
 }: BannerCustomizerProps) {
   const inputFileRef = useRef<HTMLInputElement>(null);
   const textOverlayRef = useRef<HTMLDivElement>(null);
@@ -114,8 +116,8 @@ export default function BannerCustomizer({
               {!!mainText && (
                 <div
                   ref={textOverlayRef}
-                  className={styles.textOverlayContainer}
-                  id="textOverlay"
+                  className={styles.textOverlayContainer(isDownloading)}
+                  id="textOverlayContainer"
                 >
                   <span
                     className={styles.textOverlay}
@@ -133,19 +135,7 @@ export default function BannerCustomizer({
             </div>
           </>
         ) : (
-          <label className={styles.emptyContainer} htmlFor="file">
-            <div className="h-full w-full border border-amber-600">
-              <span className="text-orange-500">Upload image</span>
-              <input
-                type="file"
-                id="file"
-                name="file"
-                accept="image/*"
-                className="hidden"
-                onChange={handleFileChange}
-              />
-            </div>
-          </label>
+          <div>salut</div>
         )}
 
         {selectedFile && (

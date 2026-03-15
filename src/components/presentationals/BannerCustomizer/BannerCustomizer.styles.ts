@@ -15,41 +15,27 @@ export const imageContainer = clsx(
   "inline-block",
 );
 
-export const emptyContainer = clsx(
-  "flex",
-  "items-center",
-  "justify-center",
-  "w-full",
-  "max-w-[550px]", // 550px
-  "aspect-[3/1]",
-  "border-2",
-  "border-dashed",
-  "border-black",
-  "rounded-md",
-  "relative",
-  "cursor-pointer",
-  "mx-auto",
-);
 
-export const textOverlayContainer = clsx(
-  "absolute",
-  "top-1/2",
-  "left-1/2",
-  "-translate-x-1/2",
-  "-translate-y-1/2",
-  "z-10",
-  "cursor-move",
-  "select-none",
-  "inline-block",
-  "max-w-full",
-  "px-2",
-  "py-1",
-);
+
+export const textOverlayContainer = (isDownloading: boolean) =>
+  clsx(
+    "absolute",
+    "top-1/2",
+    "left-1/2",
+    "-translate-x-1/2",
+    "-translate-y-1/2",
+    "z-10",
+    "cursor-move",
+    "select-none",
+    "inline-block",
+    "max-w-full",
+
+    !isDownloading && clsx("border", "border-dashed", "border-gray-400"),
+  );
 
 export const textOverlay = clsx(
   "text-center",
   "whitespace-pre-wrap",
-  "break-words",
   "pointer-events-none",
 );
 

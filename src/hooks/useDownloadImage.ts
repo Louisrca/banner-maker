@@ -4,6 +4,7 @@ type DownloadOptions = {
   fileName?: string;
   scale?: number;
   excludeGrid?: boolean;
+  setIsDownloading?: (isDownloading: boolean) => void;
 };
 
 const DEFAULT_SCALE = 3;
@@ -39,7 +40,10 @@ export const useDownloadImage = () => {
         fileName = "banner.png",
         scale = DEFAULT_SCALE,
         excludeGrid = true,
+        setIsDownloading,
       } = options;
+
+      setIsDownloading?.(true);
 
       const node = getNode(nodeName);
       const rect = node.getBoundingClientRect();
@@ -57,6 +61,7 @@ export const useDownloadImage = () => {
       }
 
       downloadBlob(blob, fileName);
+      setIsDownloading?.(false);
     } catch (err) {
       console.error("Failed to download PNG:", err);
     }
@@ -71,7 +76,10 @@ export const useDownloadImage = () => {
         fileName = "banner.jpeg",
         scale = DEFAULT_SCALE,
         excludeGrid = true,
+        setIsDownloading,
       } = options;
+
+      setIsDownloading?.(true);
 
       const node = getNode(nodeName);
       const rect = node.getBoundingClientRect();
@@ -89,6 +97,7 @@ export const useDownloadImage = () => {
       link.download = fileName;
       link.href = dataUrl;
       link.click();
+      setIsDownloading?.(false);
     } catch (err) {
       console.error("Failed to download JPEG:", err);
     }
