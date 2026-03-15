@@ -1,2 +1,50 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/fonts/SpaceGrotesk-VariableFont_wght.ttf") format("truetype");
+  font-display: swap;
+}
+
+:root {
+  --font-space-grotesk: "Space Grotesk", sans-serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-space-grotesk);
+  overflow: hidden;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.bg-grid-pattern {
+  background-image:
+    linear-gradient(
+      to right,
+      oklch(70.7% 0.022 261.325) 0.65px,
+      transparent 0.65px
+    ),
+    linear-gradient(
+      to bottom,
+      oklch(70.7% 0.022 261.325) 0.65px,
+      transparent 0.65px
+    );
+  background-size: 30.5px 30.5px;
+  mix-blend-mode: difference;
+  background-position: 0 0;
+}
