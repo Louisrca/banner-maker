@@ -1,8 +1,10 @@
 import Button from "@UI/Button/Button";
 import CardContainer from "@UI/CardContainer/CardContainer";
 import Checkbox from "@UI/Checkbox/Checkbox";
+import ColorPicker from "@UI/ColorPicker/ColorPicker";
 import * as styles from "./ControlSideBar.styles";
 import InputFile from "@UI/InputFile/InputFile";
+import TextArea from "@UI/TextArea/TextArea";
 
 type ControlSideBarProps = {
   setMainText: (text: string) => void;
@@ -48,144 +50,13 @@ export default function ControlSideBar({
             setFileName(event.target.value);
           }}
         />
-        <label htmlFor="mainText">Text Field</label>
-        <textarea
-          id="mainText"
-          name="mainText"
-          maxLength={100}
-          placeholder="Banner text"
-          className={styles.textInput}
-          value={mainText}
-          onChange={(event) => {
-            setMainText(event.target.value);
-          }}
-        />
-        <textarea
-          id="mainText"
-          name="mainText"
-          maxLength={100}
-          placeholder="Banner text"
-          className={styles.textInput}
-          value={mainText}
-          onChange={(event) => {
-            setMainText(event.target.value);
-          }}
-        />
-        <textarea
-          id="mainText"
-          name="mainText"
-          maxLength={100}
-          placeholder="Banner text"
-          className={styles.textInput}
-          value={mainText}
-          onChange={(event) => {
-            setMainText(event.target.value);
-          }}
-        />
-        <textarea
-          id="mainText"
-          name="mainText"
-          maxLength={100}
-          placeholder="Banner text"
-          className={styles.textInput}
-          value={mainText}
-          onChange={(event) => {
-            setMainText(event.target.value);
-          }}
-        />
-        <textarea
-          id="mainText"
-          name="mainText"
-          maxLength={100}
-          placeholder="Banner text"
-          className={styles.textInput}
-          value={mainText}
-          onChange={(event) => {
-            setMainText(event.target.value);
-          }}
-        />
-        <textarea
-          id="mainText"
-          name="mainText"
-          maxLength={100}
-          placeholder="Banner text"
-          className={styles.textInput}
-          value={mainText}
-          onChange={(event) => {
-            setMainText(event.target.value);
-          }}
-        />
-        <textarea
-          id="mainText"
-          name="mainText"
-          maxLength={100}
-          placeholder="Banner text"
-          className={styles.textInput}
-          value={mainText}
-          onChange={(event) => {
-            setMainText(event.target.value);
-          }}
-        />
-        <textarea
-          id="mainText"
-          name="mainText"
-          maxLength={100}
-          placeholder="Banner text"
-          className={styles.textInput}
-          value={mainText}
-          onChange={(event) => {
-            setMainText(event.target.value);
-          }}
-        />
-        <textarea
-          id="mainText"
-          name="mainText"
-          maxLength={100}
-          placeholder="Banner text"
-          className={styles.textInput}
-          value={mainText}
-          onChange={(event) => {
-            setMainText(event.target.value);
-          }}
-        />
-        <textarea
-          id="mainText"
-          name="mainText"
-          maxLength={100}
-          placeholder="Banner text"
-          className={styles.textInput}
-          value={mainText}
-          onChange={(event) => {
-            setMainText(event.target.value);
-          }}
-        />
-        <textarea
-          id="mainText"
-          name="mainText"
-          maxLength={100}
-          placeholder="Banner text"
-          className={styles.textInput}
-          value={mainText}
-          onChange={(event) => {
-            setMainText(event.target.value);
-          }}
-        />
-        <textarea
-          id="mainText"
-          name="mainText"
-          maxLength={100}
-          placeholder="Banner text"
-          className={styles.textInput}
-          value={mainText}
-          onChange={(event) => {
-            setMainText(event.target.value);
-          }}
-        />
-        <input
-          type="color"
-          id="colorPicker"
+
+        <TextArea mainText={mainText} setMainText={setMainText} />
+
+        <ColorPicker
+          label="Text color"
           value={colorText}
-          onChange={(event) => setColorText(event.target.value)}
+          onChange={setColorText}
         />
 
         <Checkbox
@@ -196,7 +67,7 @@ export default function ControlSideBar({
           }
         />
 
-        <Button onClick={handleHtmlToPng}>Download banner</Button>
+        <Button onClick={handleHtmlToPng} label="Download" />
       </div>
     </CardContainer>
   );

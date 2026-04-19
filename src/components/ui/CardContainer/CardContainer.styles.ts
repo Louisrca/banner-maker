@@ -11,8 +11,6 @@ export const container = (isOverflow?: boolean) =>
     "flex-col",
     "gap-4",
     "shadow-lg",
-    isOverflow && "h-full",
-    isOverflow && "min-h-0",
-    isOverflow && "max-h-full",
-    isOverflow && "overflow-y-auto",
+    "max-h-screen",
+    isOverflow && "h-full overflow-y-auto overscroll-contain",
   );

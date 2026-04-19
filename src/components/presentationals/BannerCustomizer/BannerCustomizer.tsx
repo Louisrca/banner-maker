@@ -91,9 +91,8 @@ export default function BannerCustomizer({
                   <Button
                     buttonVariant="secondary"
                     onClick={() => inputFileRef.current?.click()}
-                  >
-                    Change image
-                  </Button>
+                    label="Change image"
+                  />
 
                   <input
                     type="file"
@@ -135,7 +134,7 @@ export default function BannerCustomizer({
             </div>
           </>
         ) : (
-          <div>salut</div>
+          <div>Upload an image to get started</div>
         )}
 
         {selectedFile && (

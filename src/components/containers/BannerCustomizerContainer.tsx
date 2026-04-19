@@ -42,17 +42,6 @@ export default function BannerCustomizerContainer() {
 
   return (
     <>
-      {/* <div className={styles.header}>
-        <h1
-          style={{
-            display: "inline-block",
-            transform: "scaleY(2) scaleX(1.5) ",
-            letterSpacing: "-0.09em",
-          }}
-        >
-          Banner Lab
-        </h1>
-      </div> */}
       <div className={styles.container}>
         <ControlSideBar
           setMainText={setMainText}
